@@ -1,0 +1,18 @@
+body{
+    background-color: antiquewhite;
+    text-align: center; 
+}
+h1{
+    font-size: 70px;
+    color: rgb(0, 146, 151);
+    margin-bottom: 0px;
+}
+h2{
+    font-size: 25px;
+    color: black;
+    margin-top: 0px;
+}
+p{
+    margin-top: 80px;
+    text-align: justify;
+}
