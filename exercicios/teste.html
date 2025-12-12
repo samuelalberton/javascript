@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #pipoca {
+            text-align: center;
+            font-size: 100px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(255, 0, 0);
+        }
+        #chato {
+            text-align: center;
+            font-size: 36px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="pipoca" ></div>
+    <div id="chato"></div>
+    <script>
+        var gosto = window.confirm('Você gosta de pipoca?')
+        var txt1 = document.getElementById('pipoca')
+        var txt2 = document.getElementById('chato')
+
+        if(gosto == true){
+            txt1.textContent ='PIPOCA !'
+        }
+        else{
+            txt2.textContent = 'Que pena que você não gosta de pipoca '
+        }
+    </script>
+</body>
+</html>

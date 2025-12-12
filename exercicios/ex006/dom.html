@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudos com DOM</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        h1{
+            color: rgb(106, 0, 206);
+            text-align: center;
+            font-size: 90px;
+        }
+        p{
+            font-size: 45px;
+            text-align: center;
+        }
+        div{
+            font-size: 45px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Eu estou estudando <br> DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>Aperendendo <strong>DOM</strong> <br> em javascript</p>
+    <div>Clique em mim</div>
+    <script>
+        var p1 = document.getElementsByTagName('p')[1]
+        document.write(p1.innerHTML)
+        p1.style.background = 'rgb(106, 0, 206)'
+    </script>
+</body>
+</html>

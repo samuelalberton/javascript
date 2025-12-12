@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores</title>
+
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        h1{
+            text-align: center;
+            color: rgb(0, 165, 110);
+            font-size: 200px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Olá</h1>
+    <script>
+        var trabalhos = Number(prompt('Qual a sua média nos trabalhos?'))
+        var p1 = Number(prompt('Quanto você tirou na p1?'))
+        var p2 = Number(prompt('Quanto você tirou na p2?'))
+        var media = (trabalhos + p1 + p2)/3
+        var aprovacao = media >= 7 ? 'aprovado' : 'desaprovado'
+        alert(aprovacao)
+    </script>
+</body>
+</html>

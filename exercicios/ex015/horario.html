@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horas do dia</title>
+    <style>
+        body{
+            background-color: bisque;
+            padding-bottom: 0px;
+            margin: 0px;
+        }
+        h1{
+            text-align: center;
+            font-size: 60px;
+        }
+        #quadrado{
+            font-size: 40px;
+            margin: auto;
+            border-radius: 40px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.507);
+            text-align: center;
+            background-color: aquamarine;
+            height: 400px;
+            width: 600px;
+        }
+        #res{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 50px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        footer{
+            margin-right: 0px;
+            padding-right: 0px;
+            margin-left: 0px;
+            padding-left: 0px;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+            margin-top: 40.8vh;
+            text-align: center;
+            color: white;
+            background-color: black;
+        }
+        img{
+            height: 250px;
+            width: 250px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Hora do dia</h1>
+    </header>
+
+    <section id="quadrado">
+
+        <div id="res"></div>
+
+         <div id="imagen">
+            <img src="imagens/manhã.jpg" alt="dia ensolarado" id="img">
+        </div>
+
+    </section id="quadrado">
+
+    <footer> 
+        <p>Por Samuel Alberton Pereira</p>
+    </footer>
+
+    <script src="scrpit.js"></script>
+
+    <script>
+
+            var agora = new Date()
+            var horas = agora.getHours()
+            var minutos = agora.getMinutes()
+
+            var hFormat = horas < 10 ? "0" + horas : horas
+            var mFormat = minutos < 10 ? "0" + minutos : minutos
+
+            var res = document.getElementById('res')
+            res.innerHTML = `Agora são ${hFormat}:${mFormat}`
+
+            var img = document.getElementById('img')
+
+            if (horas >= 6 & horas <= 12) {
+                var img = src= "manhã.jpeg"
+            } else if (horas >= 13 & horas <= 18) {
+                var img = src= "tarde.jpeg"
+            }
+            else {
+                var img = src= "noite.jpeg"
+            }
+
+    </script>
+</body>
+</html>

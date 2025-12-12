@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            text-align: center;
+            font-size: 60px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="tela">
+
+    </div>
+
+    <script>
+        var agora = new Date()
+        var diaSem = agora.getDay()
+        var tela = document.getElementById('tela')
+        tela.innerText = `Hoje é`
+
+        switch(diaSem){
+            case 0: tela.innerText += ' Domingo' 
+            break
+            case 1: tela.innerText += ' Segunda'
+            break 
+            case 2: tela.innerText += ' Terça'
+            break 
+            case 3: tela.innerText += ' Quarta'
+            break 
+            case 4: tela.innerText += ' Quinta'
+            break 
+            case 5: tela.innerText += ' Sexta'
+            break 
+            case 6: tela.innerText += ' Sábado'
+            break 
+            default: tela.innerText += ' [ERRO] dia invalido! '
+            break
+        }
+    </script>
+</body>
+</html>

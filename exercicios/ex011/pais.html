@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Países</title>
+</head>
+<body>
+    <h1>Países do mundo</h1>
+    Sua nacionalidade: <input type="text" id="txt">
+    <input type="button" value="Verificar" onclick="clicar()">
+
+    <div id="res">
+
+    </div>
+    <script>
+        function clicar() {
+            var local = document.getElementById("txt")
+            var res = document.getElementById("res")
+            res.innerText = `Você `
+            if ( local.value == 'brasil' ) { res.innerHTML += `é um brasileiro`}else { res.innerHTML += `é um estrangeiro` }
+        }
+    </script>
+</body>
+</html>

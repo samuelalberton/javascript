@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>horas</title>
+    <style>
+        h1{
+            font-size: 90px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        #res{
+            font-size: 90px;
+            text-align: center;
+        }
+        #input{
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Horas</h1>
+    <div id="input">
+        <input type="button" value="Horas" onclick="horario()" id="botao">
+    </div>
+    <div id="res">
+    </div>
+
+    <script>
+        function horario() {
+            var agora = new Date()
+            var horas = agora.getHours()
+            var minutos = agora.getMinutes()
+
+            var hFormat = horas < 10 ? "0" + horas : horas
+            var mFormat = minutos < 10 ? "0" + minutos : minutos
+
+            var res = document.getElementById('res')
+            res.innerHTML = `Agora são ${hFormat}:${mFormat}`
+
+            if (horas <= 6) {
+                res.innerHTML += ` 
+                Está de madrugada`
+            } else if (horas <= 12) {
+                res.innerHTML += ` 
+                Está de manhã`
+            } else if (horas < 18) {
+                res.innerHTML += ` 
+                Está de tarde`
+            } else {
+                res.innerHTML += ` 
+                Está de noite`
+            }
+        }
+    </script>
+</body>
+</html>

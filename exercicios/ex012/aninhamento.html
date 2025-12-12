@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condições aninhadas</title>
+</head>
+<body>
+    <h1>Voto no Brasil</h1>
+    <input type="number" name="idade" id="idade">
+    <input type="button" value="Verificar" onclick="ver()">
+    <div id="res">
+    </div>
+    <script>
+        function ver() {
+            var txtidade = document.getElementById('idade')
+            var idade = Number(txtidade.value)
+            var res = document.querySelector('div#res')
+
+            res.innerText = `Você tem ${idade} anos
+            `
+
+             if (idade < 16) {
+                res.innerHTML += 'Não vota'
+            } else if (idade < 18 || idade > 65) {
+                res.innerHTML += 'Voto opcional'
+            } else {
+                res.innerHTML += 'voto obrigatório'
+            }
+        }
+    </script>
+</body>
+</html>

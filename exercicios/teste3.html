@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores</title>
+    <style>
+
+        div#area{
+            font-weight: bolder;
+            padding-top: 80px;
+            font-size: 36px;
+            margin: 10px;
+            text-align: center;
+            height: 120px;
+            width: 200px;
+            background-color: rgb(228, 129, 0);
+            color: rgb(255, 255, 255);
+            border: 5px solid rgb(0, 0, 0);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="area" onmouseenter="entrar()">
+        CLIQUE!
+    </div>
+
+    <script>
+        
+        function entrar() {
+            var a = document.getElementById('area')
+            a.style.backgroundColor = 'black'
+            a.innerText = 'Vc clicou'
+            a.style.border = '5px solid rgb(90, 90, 90)'
+        }
+    </script>
+</body>
+</html>
