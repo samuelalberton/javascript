@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciador de Tarefas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .app {
+      background: #ffffff;
+      padding: 20px;
+      width: 350px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button.adicionar {
+      background: #4caf50;
+      color: white;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f9f9f9;
+      margin-bottom: 8px;
+      padding: 8px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    li.concluida span {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .acoes button {
+      margin-left: 5px;
+      background: #ddd;
+    }
+
+    .acoes button.excluir {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .acoes button.editar {
+      background: #3498db;
+      color: white;
+    }
+
+    .acoes button.concluir {
+      background: #2ecc71;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>Minhas Tarefas</h1>
+
+    <form id="form-tarefa">
+      <input type="text" id="entrada-tarefa" placeholder="Digite uma tarefa">
+      <button type="submit" class="adicionar">Adicionar</button>
+    </form>
+
+    <ul id="lista-tarefas"></ul>
+  </div>
+
+  <script>
+  const formulario = document.getElementById("form-tarefa");
+  const entrada = document.getElementById("entrada-tarefa");
+  const lista = document.getElementById("lista-tarefas");
+
+  let tarefas = [];
+
+  // =========================
+  // 1. ADICIONAR TAREFA
+  // =========================
+  formulario.addEventListener("submit", function(evento) {
+    evento.preventDefault();
+
+    const textoDigitado = entrada.value.trim();
+    if (textoDigitado === "") return;
+
+    tarefas.push({ 
+      texto: textoDigitado, 
+      concluida: false 
+    });
+
+    entrada.value = "";
+    salvarTarefas();
+    renderizarTarefas();
+  });
+
+  // =========================
+  // 2. MARCAR TAREFA CONCLUÍDA
+  // =========================
+  function alternarConcluida(indice) {
+    tarefas[indice].concluida = !tarefas[indice].concluida;
+    salvarTarefas();
+    renderizarTarefas();
+  }
+
+  // =========================
+  // 3. EDITAR TAREFA
+  // =========================
+  function editarTarefa(indice) {
+    const novoTexto = prompt("Editar tarefa:", tarefas[indice].texto);
+
+    if (novoTexto !== null && novoTexto.trim() !== "") {
+      tarefas[indice].texto = novoTexto.trim();
+      salvarTarefas();
+      renderizarTarefas();
+    }
+  }
+
+  // =========================
+  // 4. EXCLUIR TAREFA
+  // =========================
+  function excluirTarefa(indice) {
+    tarefas.splice(indice, 1);
+    salvarTarefas();
+    renderizarTarefas();
+  }
+
+  // =========================
+  // 5. SALVAR NO localStorage
+  // =========================
+  function salvarTarefas() {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  }
+
+  // =========================
+  // 6. CARREGAR DO localStorage
+  // =========================
+  function carregarTarefas() {
+    const dados = localStorage.getItem("tarefas");
+    if (dados) {
+      tarefas = JSON.parse(dados);
+      renderizarTarefas();
+    }
+  }
+
+  // =========================
+  // 7. RENDERIZAR TAREFAS
+  // =========================
+  function renderizarTarefas() {
+    lista.innerHTML = "";
+
+    tarefas.forEach((tarefa, indice) => {
+      const item = document.createElement("li");
+
+      if (tarefa.concluida) {
+        item.classList.add("concluida");
+      }
+
+      const texto = document.createElement("span");
+      texto.textContent = tarefa.texto;
+
+      const acoes = document.createElement("div");
+      acoes.className = "acoes";
+
+      const botaoConcluir = document.createElement("button");
+      botaoConcluir.textContent = "✓";
+      botaoConcluir.className = "concluir";
+      botaoConcluir.onclick = () => alternarConcluida(indice);
+
+      const botaoEditar = document.createElement("button");
+      botaoEditar.textContent = "Editar";
+      botaoEditar.className = "editar";
+      botaoEditar.onclick = () => editarTarefa(indice);
+
+      const botaoExcluir = document.createElement("button");
+      botaoExcluir.textContent = "X";
+      botaoExcluir.className = "excluir";
+      botaoExcluir.onclick = () => excluirTarefa(indice);
+
+      acoes.appendChild(botaoConcluir);
+      acoes.appendChild(botaoEditar);
+      acoes.appendChild(botaoExcluir);
+
+      item.appendChild(texto);
+      item.appendChild(acoes);
+
+      lista.appendChild(item);
+    });
+  }
+
+  // Inicialização
+  carregarTarefas();
+</script>
+
+</body>
+</html>

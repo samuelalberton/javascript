@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador de tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <form id="formulario">
+
+        <h1>MINHAS TAREFAS</h1>
+
+        <input type="text" name="tarefa" id="tarefa" placeholder="Digite uma tarefa">
+
+        <button type="submit" id="add">Adicionar</button>
+
+        <ul id="lista"></ul>
+
+    </form>
+    
+
+    <script>
+
+        let lista = document.getElementById('lista')
+        let entrada = document.getElementById('tarefa')
+        let formulario = document.getElementById('formulario')
+
+
+        let tarefas = []
+
+        
+        //Adicinar tarefa
+
+            formulario.addEventListener("submit", function(evento) {
+                evento.preventDefault();
+
+                let txt  = entrada.value.trim();
+                if(txt === "") return;
+
+                tarefas.push({
+                    texto: txt, 
+                    concluida: false 
+                })
+
+                entrada.value = ''
+
+                salvar();
+                renderizar();
+                 
+            })
+
+        //Marcar como concluída
+
+        function marcarconcluido(indice){
+            tarefas[indice].concluida = !tarefas[indice].concluida
+            salvar();
+            renderizar();
+        }
+
+        //Editar tarefa
+
+        function editar(indice){
+            let novotexto = window.prompt('Editar tarefa:', tarefas[indice].texto);
+
+            if(novotexto !== null && novotexto.trim() !== ''){
+                tarefas[indice].texto = novotexto.trim();
+                salvar();
+                renderizar();
+            }
+        }
+
+        //Excluir tarefa
+
+        function excluir(indice){
+            tarefas.splice(indice, 1);
+            salvar();
+            renderizar();
+        }
+
+        //Salvar no localStorage
+
+        function salvar() {
+            localStorage.setItem('tarefas', JSON.stringify(tarefas));
+        }
+
+
+        //Carregar localStorage
+
+        function carregar() {
+
+            const dados = localStorage.getItem('tarefas');
+
+            if (dados) {
+
+                tarefas = JSON.parse(dados);
+                renderizar();
+
+            }
+        }
+
+        // Renderizar lista
+        function renderizar(){
+            lista.innerHTML = ""
+            tarefas.forEach(function(tarefa, indice){
+
+            let item = document.createElement('li');
+
+            if(tarefa.concluida){
+                item.classList.add("concluida");
+            }
+
+            const texto = document.createElement("span")
+            texto.textContent = tarefa.texto;
+
+            const acoes = document.createElement("div")
+            acoes.className = 'acoes';
+
+            const botaoconcluir = document.createElement("button")
+            botaoconcluir.textContent = "✓";
+            botaoconcluir.className = "concluir"
+            botaoconcluir.onclick = () => marcarconcluido(indice);
+
+            const botaoeditar = document.createElement("button")
+            botaoeditar.textContent = "Editar";
+            botaoeditar.className = "editar"
+            botaoeditar.onclick = () => editar(indice);
+
+            const botaoexcluir = document.createElement("button")
+            botaoexcluir.textContent = "X";
+            botaoexcluir.className = "excluir"
+            botaoexcluir.onclick = () => excluir(indice);
+
+            acoes.appendChild(botaoconcluir);
+            acoes.appendChild(botaoeditar);
+            acoes.appendChild(botaoexcluir);
+
+            item.appendChild(texto);
+            item.appendChild(acoes);
+
+            lista.appendChild(item);
+        })}
+
+        carregar();
+    </script>
+</body>
+</html>

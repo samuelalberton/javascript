@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laços</title>
+    <style>
+        #res{
+            background-color: rgb(0, 255, 255);
+            height: 300000px;
+            width: 100px;
+            margin: auto;
+            text-align: center;
+        }
+        #txt{
+            text-align: center;
+            padding-bottom: 30px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>EU ERREI </h1> 
+    <div id="txt">
+    Nivel do erro: <input type="number" name="dscp" 
+    id="dscp">
+    <input type="button" value="começar" onclick="desculpa()">
+    </div>
+    <div id="res"></div>
+
+    <script>
+        function desculpa(){
+            var res = document.getElementById('res')
+            res.innerHTML = ''
+            var n = document.getElementById('dscp')
+
+
+            for(var c = 0; c < n.value; c++){
+                res.innerHTML += 'Desculpa '
+            }
+
+
+            /*var c = 0
+            do{
+                res.innerHTML += 'Desculpa '
+                c++
+            }while(c < n.value )*/
+
+        }
+    </script>
+</body>
+</html>

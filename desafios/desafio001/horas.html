@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horário</title>
+    <style>
+        body{
+            background-color: rgb( 0, 0, 0);
+        }
+        h1{
+            text-align: center;
+            font-size: 50px;
+            color: rgb(255, 255, 255);
+        }
+        h2{
+            margin-bottom: 20px;
+            font-size: 40px;
+            padding-top: 20px;
+            padding-bottom: 0px;
+        }
+        p{
+            text-align: center;
+        }
+        div#qdrd{
+            height: 430px;
+            width: 500px;
+            background-color: antiquewhite;
+            border-radius: 50px;
+            text-align: center;
+            margin: auto;
+            box-shadow: 2px 2px 8px rgba(37, 37, 37, 0.623);
+        }
+        img{
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            background-color: aqua;
+            margin: auto;
+            padding-top: 0px;
+            margin-top: 0px;
+        }
+        p{
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body onload="carregar()">
+
+    <header>
+        <h1>HORA DO DIA</h1>
+    </header>
+    
+    <section>
+        <div id="qdrd">
+            <h2 id="texto">AGORA SÃO</h2>
+            <div >
+                <img src="manhã.jpg" alt="manhã" id="img">
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <p>By Samuel Alberton</p>
+    </footer>
+
+    <script>
+        function carregar(){
+            var txt = document.getElementById('texto')
+            var img = document.getElementById('img')
+            var data = new Date()
+            var hora = data.getHours()
+            var minutos = data.getMinutes()
+            txt.innerHTML = (`Agora são ${hora}:${minutos} `)
+            if (hora > 5 & hora < 13) {
+                img.src = "manhã.jpg"
+                document.body.style.background = '#E9C46A'
+            }
+            else if (hora < 19 & hora > 5){
+                img.src = "tarde.jpg"
+                document.body.style.background = '#B9846F'
+            }
+            else {
+                img.src = "noite.jpg"
+                document.body.style.background = '#00222F'
+            }
+        }
+    </script>
+
+</body>
+</html>

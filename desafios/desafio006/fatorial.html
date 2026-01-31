@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatoriais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+          <header>
+        <h1>Fatoriais</h1>
+    </header>
+
+    <section>
+        <div id="qdrd">
+            Número (Até 20): <input type="number" name="n1" id="n1"> <input type="button" value="Calcular" onclick="calcular()">
+            <br>
+            <div id="res"></div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>By Samuel Alberton Pereira</p>
+    </footer>
+
+
+
+    <script>
+        
+
+        
+
+
+        function fatorial(n){
+
+            if (n == 1 || n == 0){
+                return 1
+            } else {
+                return n * fatorial(n-1)
+            }  
+
+        }
+
+        function calcular() {
+            var txt1 = document.getElementById('n1')
+            var n1 = Number(txt1.value)
+            var res = document.getElementById('res')
+
+            if (n1 > 20){
+                window.alert('Digite um nùmero abaixo de 20')
+                return
+            }
+
+            if(n1 < 0) {
+                window.alert('Não existe fatorial de número negativo')
+                return
+            } else {
+                res.innerHTML = `Fatorial de ${n1} é igual a ${fatorial(n1)}`
+            }
+        }
+
+
+        /*function fatorial() {
+             var txt1 = document.getElementById('n1')
+             var n1 = Number(txt1.value)
+             var res = document.getElementById('res')
+             var fat = n1
+
+            if (n1 > 20 || n1 < -20){
+                window.alert('Difite um numero entre -20 e 20')
+                return
+            }
+
+            for( var c = fat - 1; c >= 2 ; c--){
+                fat *= c
+            }
+
+            res.innerHTML += `${n1}! = ${fat} <br>` 
+        }*/
+    </script>
+</body>
+</html>

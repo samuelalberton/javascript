@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>VAMOS CONTAR</h1>
+    </header>
+
+    <section>
+        <div id="qdrd"> 
+            inicio: <input type="number" name="n1" id="n1">
+            <br>
+            fim: <input type="number" name="n2" id="n2">
+            <br>
+            passo: <input type="number" name="n3" id="n3">
+            <br>
+            <input type="button" value="contar" onclick="contar()">
+
+
+            <div id="res"> </div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>By Samuel Alberton Pereira</p>
+    </footer>
+
+    <script>
+        function contar() {
+            var iniciotxt = document.getElementById('n1')
+            var fimtxt = document.getElementById('n2')
+            var passotxt = document.getElementById('n3')
+            var res = document.getElementById('res')
+            res.innerHTML = ''
+
+            if (iniciotxt.value.length === 0 || 
+                fimtxt.value.length === 0 || 
+                passotxt.value.length === 0 ) 
+            {
+                res.innerHTML = "impossivel contar"
+                return
+            }
+
+            var inicio = Number(iniciotxt.value)
+            var fim = Number(fimtxt.value)
+            var passo = Number(passotxt.value)
+            // var C = inicio
+
+            if (inicio < fim) {
+                for(var c = inicio; c <= fim; c += passo ) {
+                    res.innerHTML += `${c}👉 `
+                }
+            }  else {
+                for(var c = inicio; c >= fim; c -= passo ) {
+                    res.innerHTML += `${c}👉 `
+                }
+            }
+
+               /* while(C <= fim) {
+                        res.innerHTML += `${C}👉 `
+                        C +=  passo
+                    } } else {
+                        while(C >= fim) {
+                            res.innerHTML += `${C}👉 `
+                            C -= passo
+                        }*/
+           
+            res.innerHTML += "🏁"
+        }
+    </script>
+</body>
+</html>

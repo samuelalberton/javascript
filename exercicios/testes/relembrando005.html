@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condições</title>
+</head>
+<body>
+    <h1>Sistema de multas</h1>
+
+    Digite sua velocidade: <input type="number" name="vel" id="vel"> km/h 
+    <br>
+    <input type="button" value="conferir" onclick="clicar()">
+    <div id="res"></div>
+
+    <script>
+
+        function clicar(){
+
+            var txtv = document.getElementById('vel')
+            var v = Number(txtv.value)
+            var txt = document.getElementById('res')
+
+            txt.innerHTML =`Você está a <strong>${v} Km/h </strong>`
+
+            if (v > 60){
+                txt.innerHTML +=' <p> Você foi <strong>MULTADO!</strong> </p>'
+            } 
+        } 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <header>
+
+    </header>
+    <h1>TABUADA</h1>
+    <section>
+
+        <div id="qdrd">
+            Numero: <input type="number" name="n1" id="n1">
+            <input type="button" value="Gerar Tabuada" onclick="tabuada()">
+            <div id="res"></div>
+        </div>
+        
+
+    </section>
+
+    <footer>
+        <p>By Samuel Alberton Pereira</p>
+    </footer>
+
+    <script>
+
+        var res = document.getElementById('res')
+        res.innerHTML = 'Preencha acima'
+
+        function tabuada(){
+            res.innerHTML = ''
+            var txtn1 = document.getElementById('n1')
+
+            if (txtn1.value === ''){
+                alert('Digite um numero')
+                return
+            }
+
+            var n1 = Number(txtn1.value)
+            var c = 1
+            
+            while (c <= 100){
+                res.innerHTML += `${c} x ${n1} = ${n1 * c} <br>`
+                c++ 
+            }
+        }
+
+    </script>
+</body>
+</html>

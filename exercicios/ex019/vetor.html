@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetores</title>
+</head>
+<body>
+    <h1>Vamos criar um vetor</h1>
+    <p>Digite alguns numeros</p>
+    <input type="number" name="n1" id="n1">
+    <input type="number" name="n2" id="n2">
+    <input type="number" name="n3" id="n3">
+    <input type="number" name="n4" id="n4">
+    <input type="number" name="n5" id="n5">
+
+    <input type="button" value="mostrar vetor" onclick="mostrar()">
+    <div id="res"></div>
+    <script>
+        function mostrar() {
+          let num = [Number(document.getElementById('n1').value), Number(document.getElementById('n2').value), Number(document.getElementById('n3').value), Number(document.getElementById('n4').value), Number(document.getElementById('n5').value)] 
+          let res = document.getElementById('res') 
+
+          res.innerHTML += `Nosso vetor tem esses números: ${num} <br>`
+          res.innerHTML += `Nosso vetor em ordem crescente fica assim: ${num.sort()} <br>`
+          res.innerHTML += `O primeiro número do vetor é o ${num[0]}`
+
+        }
+    </script>
+</body>
+</html>

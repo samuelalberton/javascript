@@ -1,0 +1,101 @@
+* {
+      box-sizing: border-box;
+    }
+
+
+body{
+    background-color: antiquewhite;
+    
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+}
+
+h1{
+    text-align: center;
+    font-size: 45px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+ul {
+      list-style: none;
+      padding: 0;
+    }
+
+li{
+    display: flex;
+    background-color: rgb(227, 242, 255);
+    border-radius: 10px;
+    margin: auto;
+    padding: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 40px;
+    align-items: center;
+    transition: 0.5s;
+    justify-content: space-between;
+}
+
+#formulario{
+    background-color: rgb(255, 255, 255);
+    width: 400px;
+    margin: auto;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.527);
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.excluir{
+    background-color: rgb(255, 0, 0);
+}
+.editar{
+    background-color: rgba(155, 155, 155, 0.74);
+}
+.concluir{
+    background-color: rgb(0, 199, 0);
+}
+
+#tarefa{
+    height: 30px;
+    width: 200px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#add{
+    height: 34px;
+    width: 100px;
+    background-color: rgb(0, 219, 0);
+    border-radius: 7px;
+    font-size: 15px;
+    color: white;
+}
+
+form {
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+button {
+      padding-left:10px;
+      padding-right:10px;
+      padding-top: 10px;
+      padding-bottom:10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+    }
+
+.acoes button {
+    margin-left: 5px;
+}
+
+li.concluida span {
+      text-decoration: line-through;
+      color: gray;
+    }

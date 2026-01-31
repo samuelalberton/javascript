@@ -1,0 +1,36 @@
+body{
+    background-color: rgb(52, 133, 255);
+}
+h1{
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+#qdrd{
+    min-height: 200px;
+    width: 400px;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+#res{
+    min-height: 150px;
+    min-width: 80px;
+    width: fit-content;
+    border: 1px solid black;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    padding-left: 6px;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+}
+footer{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}

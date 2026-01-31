@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <header>
+        <h1>Analizador de números</h1>
+    </header>
+
+    <section>
+        <div id="qdrd">
+            Número ( entre 1 e 100 ): <input type="number" name="n1" id="n1"> <input type="button" value="Registrar" onclick="registrar()">
+            <br>
+            <select name="flista" id="flista" size="8"></select>
+            <br>
+            <input type="button" value="Finalizar" onclick="calcular()">
+            <div id="calc"></div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>By Samuel Alberton Pereira</p>
+    </footer>
+
+    <script>
+        let valores = []
+        let lista = document.querySelector('select#flista')
+
+        function registrar(){
+            let n1 = document.getElementById('n1')
+            let num = Number(n1.value)
+            if(num < 1 || num > 100 || n1.value.length == 0 || valores.indexOf(num) != -1) {
+                window.alert('Escolha um número valido entre 1 e 100')
+            } else {
+                valores.push(num )
+                let item = document.createElement('option')
+                item.text = `Número ${num} registrado`
+                lista.appendChild(item)
+            }         
+    } 
+        function calcular(){
+            let calc = document.getElementById('calc')
+            let qntdd = valores.length
+            valores.sort((a, b) => a - b)
+            let maior = valores[qntdd - 1]
+            let menor = valores[0]
+            let soma = 0
+                for (let c = 0; c < qntdd; c++) {
+                    soma += valores[c]
+                }
+
+            let media = soma/qntdd
+
+            calc.innerHTML += `Temos ${qntdd} números cadastrados <br> O ${maior} é o maior número <br> O ${menor} é o menor número <br> A soma dos números resulta em ${soma} <br> A média dos números é ${media} `
+                }
+    </script>
+</body>
+</html>

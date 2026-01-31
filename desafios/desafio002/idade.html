@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>VERIFICADOR DE IDADE</h1>
+    </header>
+
+    <section>
+        <div id="qdrd">
+            Ano de Nascimento: <input type="number" name="anotxt" id="anotxt">
+
+            <input type="button" value="Verificar" onclick="clicar()">
+            <br>
+            Sexo: 
+            <input type="radio" name="radsex" id="masc" checked>
+            <label for="masc">Masculino</label>
+            <input type="radio" name="radsex" id="fem">
+            <label for="fem">Feminino</label>
+            <br>
+            <p id="temp">Preencha a cima e veja o resultado!</p>
+            <div id="res">
+                
+            </div>
+            <img src="" alt="" id="imagem">
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>By Samuel Alberton Pereira</p>
+    </footer>
+
+    <script>
+        function clicar(){
+            var data = new Date()
+            var anoatual = data.getFullYear()
+            var anotxt = document.getElementById('anotxt')
+            var ano = Number(anotxt.value)
+            var res = document.getElementById('res')    
+            
+            if (ano.length == 0 || ano > anoatual){
+                window.alert('ERRO, verifique seus dados e tente novamente')
+            }
+            else {
+                var fsexo = document.getElementsByName('radsex')
+                var idade = anoatual - ano
+                var sexo = ''
+                var img = document.getElementById('imagem')
+                var temporario = document.getElementById('temp')
+                temp.innerHTML = ''
+
+                if (fsexo[0].checked) {
+                    var sexo = 'homem'
+                    
+
+                    if (idade >= 0 && idade < 10){
+                        img.src = 'imagens/criançaM.jpg'
+                    } else if (idade < 21) {
+                        img.src = 'imagens/adolescenteM.jpg'
+                    } else if (idade < 50) {
+                        img.src = 'imagens/adulto.jpg'
+                    } else {
+                        img.src = 'imagens/idoso.jpg'
+                    }
+                }
+                else {
+                    var sexo = 'mulher' 
+
+                    if (idade >= 0 && idade < 10){
+                        img.src = 'imagens/criançaF.jpg'
+                    } else if (idade < 21) {
+                        img.src = 'imagens/adolecenteF.jpg'
+                    } else if (idade < 50) {
+                        img.src = 'imagens/adulta.jpg'
+                    } else {
+                        img.src = 'imagens/idosa.jpg'
+                    } 
+                }
+
+                res.innerHTML = `Detectamos: ${sexo} de ${idade} anos`
+            }
+
+            
+        }
+    </script>
+</body>
+</html>
